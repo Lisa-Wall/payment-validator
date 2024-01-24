@@ -16,4 +16,49 @@ Components:
 
 This project is component #2 in the above list, the payment validator.
 
+# Input
+
+A JSON object representing the Interac data. Note that this input is the output from the interac-parser module from step 1 above.
+
+Sample input:
+
+```JavaScript
+
+{
+  version: '2.0',
+  uid: undefined,
+  serverId: undefined,
+  messageId: '<1569034797.175709886.1598538700364.JavaMail.app_prod@mtlpnot04.prod.certapay.com>',
+  date: 2024-01-05T14:31:40.000Z,
+  toName: 'SAMPLE LANDLORD',
+  toEmail: 'addmoney@landlord_company.ca',
+  fromName: 'SAMPLE TENANT',
+  fromEmail: 'catch@payments.interac.ca',
+  replyToName: 'SAMPLE TENANT',
+  replyToEmail: 'sample.tenant@gmail.com',
+  language: 'en',
+  amount: 5.25,
+  currency: 'CAD',
+  reference: 'CAvjMTys',
+  isAutoDeposit: true,
+  userMessage: '((UON5-CHCZ-22RH-F0N6))',
+  isEmailTransfer: true,
+  body: 'Hi SAMPLE LANDLORD,\n' +
+    'SAMPLE TENANT has sent you a money transfer for the amount of $5.25 (CAD) and the money has been automatically deposited into your bank account at Scotiabank.\n' +
+    'Message: ((UON5-CHCZ-22RH-F0N6))\n' +
+    'Reference Number : CAvjMTys\n' +
+    'Please do not reply to this email.\n' +
+    'Frequently Asked Questions: http://www.interac.ca/consumers/faqs.php#emt\n' +
+    'This email was sent to you by Interac Corp., the owner of the INTERAC e-Transfer®\n' +
+    'service, on behalf of Scotiabank.\n' +
+    'Interac Corp.\n' +
+    'Royal Bank Plaza, North Tower, 200 Bay Street, Suite 2400\n' +
+    'P.O. Box 45, Toronto, ON M5J 2J1\n' +
+    'www.interac.ca\n' +
+    '® Trade-mark of Interac Corp. Used under license.',
+  subject: 'INTERAC e-Transfer: A money transfer from SAMPLE TENANT has been automatically deposited.',
+  errors: null
+}
+```
+
 More details to follow.
