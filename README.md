@@ -61,4 +61,27 @@ Sample input:
 }
 ```
 
-More details to follow.
+## Output
+
+If successful: An object containing the data requied to generate a receipt. Note that this input is the output from the interac-parser module from step 1 above.
+
+If validation fails: Steps should be taken to notify interested parties. In our case, I would like the system to flag the error and email the sender and/or recipient of the payment so that they can take further action. Perhaps the payment amount was incorrect, for example.
+
+Successful validation should result in an object such as this:
+
+```
+{
+    logoFilePath: "",                      // Optional. Logo should be approx 80px square.
+    receiptTitle: "Receipt",               // ex: "Rent Receipt", "Service Receipt"
+    dateOfIssue: "2024-01-15",             // String. ex: new Date().toLocaleDateString()
+    amount: "745.00",                      // String representation of the amount paid.
+    receivedFrom: "Sample Tenant",
+    receivedBy_Name: "Sample Landlord",
+    receivedBy_Title: "",                  // Optional. ex: (landlord)
+    receivedBy_signatureImageFilePath: "", // Optional. If you want a signature on the receipt.
+    paymentMethod: "",                     // ex: "eTransfer", "Cheque", "Cash", "Sweat Equity"
+    rentalAddress: "1-100 Tenant Avenue, Ottawa ON, K1P 5S3",
+    month: "January, 2024"
+}
+```
+
