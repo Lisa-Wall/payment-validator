@@ -63,9 +63,9 @@ Sample input:
 
 ## Output
 
-If successful: An object containing the data requied to generate a receipt. Note that this input is the output from the interac-parser module from step 1 above.
+If validation is successful: An object containing the data required to generate a receipt.
 
-If validation fails: Steps should be taken to notify interested parties. In our case, I would like the system to flag the error and email the sender and/or recipient of the payment so that they can take further action. Perhaps the payment amount was incorrect, for example.
+If validation fails: Steps should be taken to notify interested parties. Interested parties could be generalized to be whoever has subscribed to notifications for this, but at this point, we just have ourselves to notify so we'll probably just keep it simple and send ourselves an email. The sender (tenant) should be told too, possibly with next steps/instructions. Perhaps the payment amount was incorrect, for example, and they need to send a further payment.
 
 Successful validation should result in an object such as this:
 
@@ -85,3 +85,18 @@ Successful validation should result in an object such as this:
 }
 ```
 
+## Further Considerations
+
+I wonder whether to store anything in a database. I'm trying to keep overhead minimal. But if a payment comes in part way through a month, how do I know if it's late rent for the past month or early rent for the next month, without some kind of rent roll? Maybe design something ultra simple, with a notes field to explain anything unusual. Something like this:
+  ```
+  Payment
+  {
+    name: "Sample Tenant",
+    amount: "745.00",
+    month: "02-2024",
+    full_or_partial: "partial",
+    late_fees: "4.00",
+    path_PDF: "",
+    notes: "Rent was paid in two payments and this is the second and final payment."
+  }
+ 
